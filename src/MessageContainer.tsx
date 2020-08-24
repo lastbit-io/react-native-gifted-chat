@@ -183,7 +183,7 @@ export default class MessageContainer<
     if (inverted) {
       this.scrollTo({ offset: 0, animated })
     } else if (this.props.forwardRef && this.props.forwardRef.current) {
-      this.props.forwardRef!.current!.scrollToEnd({ animated })
+      this.props.forwardRef.current.scrollToEnd({ animated: true })
     }
   }
 
@@ -243,6 +243,8 @@ export default class MessageContainer<
         inverted,
         nextMessage,
         position: item.user._id === user._id ? 'right' : 'left',
+        index,
+        oldMessages: messages,
       }
 
       if (this.props.renderMessage) {

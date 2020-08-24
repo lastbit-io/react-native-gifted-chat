@@ -71,6 +71,8 @@ export default class Message<
   }
 
   static propTypes = {
+    index: PropTypes.string,
+    oldMessages: PropTypes.arrayOf(PropTypes.object),
     renderAvatar: PropTypes.func,
     showUserAvatar: PropTypes.bool,
     renderBubble: PropTypes.func,
@@ -172,7 +174,13 @@ export default class Message<
   }
 
   render() {
-    const { currentMessage, nextMessage, position, containerStyle } = this.props
+    const {
+      currentMessage,
+      nextMessage,
+      position,
+      containerStyle,
+      oldMessages,
+    } = this.props
     if (currentMessage) {
       const sameUser = isSameUser(currentMessage, nextMessage!)
       return (
@@ -187,6 +195,9 @@ export default class Message<
                 { marginBottom: sameUser ? 2 : 10 },
                 !this.props.inverted && { marginBottom: 2 },
                 containerStyle && containerStyle[position],
+                ...(this.props.index === oldMessages.length - 1
+                  ? [{ marginBottom: 50 }]
+                  : []),
               ]}
             >
               {this.props.position === 'left' ? this.renderAvatar() : null}

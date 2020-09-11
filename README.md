@@ -16,6 +16,7 @@
   <a href="https://www.npmjs.com/package/react-native-gifted-chat">
   <img alt="npm downloads" src="https://img.shields.io/npm/dm/react-native-gifted-chat.svg"/></a>
   <a href="https://www.npmjs.com/package/react-native-gifted-chat"><img alt="npm version" src="https://badge.fury.io/js/react-native-gifted-chat.svg"/></a>
+  <a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/FaridSafi/react-native-gifted-chat.svg" alt="build"></a>
    <a href="https://reactnative.gallery/FaridSafi/gifted-chat"><img src="https://img.shields.io/badge/reactnative.gallery-%F0%9F%8E%AC-green.svg"/></a>
 
 </p>
@@ -80,12 +81,11 @@
   </p>
 </p>
 
-## The future of GiftedChat 🎉 
-Please give us your advice: [Related PR](https://github.com/FaridSafi/react-native-gifted-chat/pull/1775)
-
 ## Please vote
 
 **GiftedChat** depends on other packages and some needs a boost, please vote for PRs will improve it, thanks:
+
+- https://github.com/taskrabbit/react-native-parsed-text/pull/58
 - https://github.com/watadarkstar/react-native-typing-animation/issues/18
 
 ## Features
@@ -132,35 +132,37 @@ Please give us your advice: [Related PR](https://github.com/FaridSafi/react-nati
 ## Example
 
 ```jsx
-import React, { useState, useCallback, useEffect } from 'react'
-import { GiftedChat } from 'react-native-gifted-chat'
+import React, { useState, useCallback, useEffect } from "react"
+import { GiftedChat } from "react-native-gifted-chat"
 
 export function Example() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([])
 
   useEffect(() => {
     setMessages([
       {
         _id: 1,
-        text: 'Hello developer',
+        text: "Hello developer",
         createdAt: new Date(),
         user: {
           _id: 2,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
+          name: "React Native",
+          avatar: "https://placeimg.com/140/140/any",
         },
       },
     ])
   }, [])
 
   const onSend = useCallback((messages = []) => {
-    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+    setMessages((previousMessages) =>
+      GiftedChat.append(previousMessages, messages)
+    )
   }, [])
 
   return (
     <GiftedChat
       messages={messages}
-      onSend={messages => onSend(messages)}
+      onSend={(messages) => onSend(messages)}
       user={{
         _id: 1,
       }}
@@ -245,7 +247,7 @@ interface Reply {
 }
 
 interface QuickReplies {
-  type: 'radio' | 'checkbox'
+  type: "radio" | "checkbox"
   values: Reply[]
   keepIt?: boolean
 }
@@ -409,7 +411,7 @@ simply implement `onInputTextChanged` to receive typing events and reset events 
 ```js
 <GiftedChat
   text={customText}
-  onInputTextChanged={text => this.setCustomText(text)}
+  onInputTextChanged={(text) => this.setCustomText(text)}
   /* ... */
 />
 ```
@@ -451,17 +453,15 @@ If you use React Navigation, additional handling may be required to account for 
 
 ### Native
 
-1. Install `yarn global add expo-cli`
-2. Install dependencies`yarn install`
-3. `expo start`
+1. Install `yarn add -g expo-cli`
+2. `expo start`
 
 ### react-native-web
 
 #### With expo
 
-1. Install `yarn global add expo-cli`
-2. Install dependencies`yarn install`
-3. `expo start -w`
+1. Install `yarn add -g expo-cli`
+2. `expo start -w`
 
 [Upgrade snack version](https://snackager.expo.io/bundle/react-native-gifted-chat@0.15.0?bypassCache=true)
 
@@ -476,15 +476,15 @@ module.exports = function override(config, env) {
     test: /\.js$/,
     exclude: /node_modules[/\\](?!react-native-gifted-chat|react-native-lightbox|react-native-parsed-text)/,
     use: {
-      loader: 'babel-loader',
+      loader: "babel-loader",
       options: {
         babelrc: false,
         configFile: false,
         presets: [
-          ['@babel/preset-env', { useBuiltIns: 'usage' }],
-          '@babel/preset-react',
+          ["@babel/preset-env", { useBuiltIns: "usage" }],
+          "@babel/preset-react",
         ],
-        plugins: ['@babel/plugin-proposal-class-properties'],
+        plugins: ["@babel/plugin-proposal-class-properties"],
       },
     },
   })
@@ -527,4 +527,4 @@ Feel free to ask me questions on Twitter [@FaridSafi](https://www.twitter.com/Fa
 
 ## Hire an expert!
 
-Looking for a ReactNative freelance expert with more than 14 years of experience? Contact Xavier from his [website](https://xaviercarpentier.com)!
+Looking for a ReactNative freelance expert with more than 12 years of experience? Contact Xavier from his [website](https://xaviercarpentier.com)!
